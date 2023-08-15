@@ -9,7 +9,7 @@ on:
       - '*'
 
 env:
-  PROJECT_URL: https://github.com/pftf/RPi4
+  PROJECT_URL: https://github.com/cedel1/RPi4
   RPI_FIRMWARE_URL: https://github.com/raspberrypi/firmware/
   ARCH: AARCH64
   COMPILER: GCC5
@@ -43,6 +43,7 @@ jobs:
       run: |
         patch --binary -d edk2 -p1 -i ../0001-MdeModulePkg-UefiBootManagerLib-Signal-ReadyToBoot-o.patch
         patch --binary -d edk2-platforms -p1 -i ../0002-Check-for-Boot-Discovery-Policy-change.patch
+        patch --binary -d edk2 -p1 -i ../0003-TEST_ArmPkg_Add_Pcd_to_disable_EFI_MEMORY_ATTRIBUTE_PROTOCOL.patch
 
     - name: Set up EDK2
       run: make -C edk2/BaseTools
@@ -99,8 +100,8 @@ jobs:
       id: create_release
       uses: softprops/action-gh-release@v1
       with:
-        draft: false
-        prerelease: false
+        draft: true
+        prerelease: true
         token: ${{ secrets.GITHUB_TOKEN }}
         body: Raspberry Pi 4 UEFI Firmware ${{ steps.set_version.outputs.version }}
         tag_name: ${{ steps.set_version.outputs.version }}
