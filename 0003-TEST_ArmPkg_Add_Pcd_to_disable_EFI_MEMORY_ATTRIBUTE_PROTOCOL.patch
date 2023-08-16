@@ -26,7 +26,7 @@ index 1a16d044c94b..bd612c8c4b93 100644
    gArmTokenSpaceGuid.PcdCpuResetAddress|0x00000000|UINT32|0x00000005
  
 +  # Enable/Disable EFI_MEMORY_ATTRIBUTE_PROTOCOL
-+  gArmTokenSpaceGuid.PcdEnableEfiMemoryAttributeProtocol|TRUE|BOOLEAN|0x000000EE
++  gArmTokenSpaceGuid.PcdEnableEfiMemoryAttributeProtocol|FALSE|BOOLEAN|0x000000EE
 +
    #
    # ARM Secure Firmware PCDs
